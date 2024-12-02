@@ -39,7 +39,15 @@ public class GetMethodQuiz08 extends HttpServlet {
 		
 		for (String text : list) {
 			if (text.contains(keyword)) {
-				out.print(text + "<br>");
+				//out.print(text + "<br>");
+				
+				// 1) replace
+//				text = text.replace(keyword, "<b>" + keyword + "</b>");
+//				out.print(text + "<br>");
+				
+				// 2) split => 기준 keyword
+				String[] words = text.split(keyword); // 0, 1
+				out.print(words[0] + "<b>" + keyword + "</b>" + words[1] + "<br>");
 			}
 		}
 		
