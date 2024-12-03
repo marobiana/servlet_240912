@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>체격 조건</title>
+<title>장보기 목록</title>
 <!-- bootstrap CDN -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
@@ -12,17 +12,7 @@
 </head>
 <body>
 	<div class="container">
-		<h1>체격 조건 입력</h1>
-		
-		<form method="get" action="/lesson02/quiz03_result.jsp">
-			<div class="d-flex align-items-end">
-				<input type="text" name="height" class="form-control col-3" placeholder="키를 입력하세요">
-				<span>cm</span>
-				<input type="text" name="weight" class="form-control col-3 ml-3" placeholder="몸무게를 입력하세요">
-				<span>kg</span>
-				<button type="submit" class="btn btn-info ml-3">계산</button>
-			</div>
-		</form>
+		<h1>장보기 목록</h1>
 	</div>
 </body>
 </html>
