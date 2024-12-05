@@ -100,7 +100,7 @@
     musicList.add(musicInfo);
 %>
 	<div id="wrap" class="container">
-		<header class="bg-secondary d-flex align-items-center">
+		<header class="d-flex align-items-center">
 			<%-- 로고 --%>
 			<div class="col-2">
 				<h3><a href="/lesson02/quiz10_list.jsp" class="text-success">Melong</a></h3>
@@ -117,7 +117,7 @@
 		</header>
 		
 		<%-- 메뉴 --%>
-		<nav class="bg-info">
+		<nav>
 			<ul class="nav">
 				<li class="nav-item"><a href="#" class="nav-link text-dark font-weight-bold">멜롱차트</a></li>
 				<li class="nav-item"><a href="#" class="nav-link text-dark font-weight-bold">최신음악</a></li>
@@ -128,24 +128,53 @@
 		</nav>
 		
 		<%-- 내용 --%>
-		<section class="contents bg-warning">
+		<section class="contents">
 			<%-- 아티스트 정보 --%>
-			<div>
+			<div class="d-flex border border-success p-3">
 				<%-- 이미지 --%>
-				<div>
+				<div class="mr-3">
 					<img src="<%= artistInfo.get("photo") %>" alt="아티스트 프로필이미지" width="150">
 				</div>
 				
 				<%-- 가수 정보 --%>
-				<div></div>
+				<div>
+					<h3 class="font-weight-bold"><%= artistInfo.get("name") %></h3>
+					<div><%= artistInfo.get("agency") %></div>
+					<div><%= artistInfo.get("debute") %> 데뷔</div>
+				</div>
 			</div>
 			
 			<%-- 곡 목록 --%>
+			<div class="mt-3">
+				<h4>곡 목록</h4>
+				<table class="table text-center">
+					<thead>
+						<tr>
+							<th>No.</th>
+							<th>제목</th>
+							<th>앨범</th>
+						</tr>
+					</thead>
+					<tbody>
+					<%
+						for (Map<String, Object> music : musicList) {
+					%>
+						<tr>
+							<td><%= music.get("id") %></td>
+							<td><a href="/lesson02/quiz10_detail.jsp"><%= music.get("title") %></a></td>
+							<td><%= music.get("album") %></td>
+						</tr>
+					<%
+						}
+					%>
+					</tbody>
+				</table>
+			</div>
 		</section>
 		<hr>
 		
 		<%-- 하단 --%>
-		<footer class="bg-success">
+		<footer>
 			<small class="text-secondary">Copyright 2024. melong All Rights Reserved.</small>
 		</footer>
 	</div>
