@@ -101,6 +101,34 @@
     musicInfo.put("lyricist", "아이유");
     musicList.add(musicInfo);
 %>
+<%
+	Map<String, Object> target = null; // 검색된 결과(노래)
+
+	// 1) id로 들어오는 경우 -> a 태그
+	if (request.getParameter("id") != null) {
+		int id = Integer.parseInt(request.getParameter("id"));
+		
+		for (Map<String, Object> music : musicList) {
+			if (music.get("id").equals(id)) {
+				target = music;
+				break;
+			}
+		}
+	}
+	
+	// 2) 검색어(노래 제목)로 들어오는 경우 -> form 태그
+	if (request.getParameter("search") != null) {
+		for (Map<String, Object> music : musicList) {
+			if (music.get("title").equals(request.getParameter("search"))) {
+				target = music;
+				break;
+			}
+		}
+	}
+	
+	
+	//out.print(target);
+%>
 	<div id="wrap" class="container">
 		<header class="d-flex align-items-center">
 			<%-- 로고 --%>
@@ -109,12 +137,14 @@
 			</div>
 			<%-- 검색 --%>
 			<div class="col-10">
-				<div class="input-group">
-					<input type="text" class="form-control col-6">
-					<div class="input-group-append">
-						<button class="btn btn-info" type="button">검색</button>
+				<form method="get" action="/lesson02/quiz10_detail.jsp">
+					<div class="input-group">
+						<input type="text" name="search" class="form-control col-6">
+						<div class="input-group-append">
+							<button class="btn btn-info" type="submit">검색</button>
+						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 		</header>
 		
@@ -141,8 +171,8 @@
 				
 				<%-- 곡 정보 --%>
 				<div>
-					<div class="display-4">삐삐</div>
-					<div class="text-success font-weight-bold">아이유</div>
+					<div class="display-4"><%= target.get("title") %></div>
+					<div class="text-success font-weight-bold"><%= target.get("singer") %></div>
 					<div class="music-info d-flex mt-2">
 						<div>
 							<div>앨범</div>
@@ -151,10 +181,10 @@
 							<div>작사가</div>
 						</div>
 						<div class="ml-4">
-							<div>앨범</div>
-							<div>재생시간</div>
-							<div>작곡가</div>
-							<div>작사가</div>
+							<div><%= target.get("album") %></div>
+							<div><%= (int)target.get("time") / 60 %>:<%= (int)target.get("time") % 60 %></div>
+							<div><%= target.get("composer") %></div>
+							<div><%= target.get("lyricist") %></div>
 						</div>
 					</div>
 				</div>

@@ -107,12 +107,14 @@
 			</div>
 			<%-- 검색 --%>
 			<div class="col-10">
-				<div class="input-group">
-					<input type="text" class="form-control col-6">
-					<div class="input-group-append">
-						<button class="btn btn-info" type="button">검색</button>
+				<form method="get" action="/lesson02/quiz10_detail.jsp">
+					<div class="input-group">
+						<input type="text" name="search" class="form-control col-6">
+						<div class="input-group-append">
+							<button class="btn btn-info" type="submit">검색</button>
+						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 		</header>
 		
@@ -146,7 +148,7 @@
 			
 			<%-- 곡 목록 --%>
 			<div class="mt-3">
-				<h4>곡 목록</h4>
+				<h4 class="font-weight-bold">곡 목록</h4>
 				<table class="table text-center">
 					<thead>
 						<tr>
@@ -161,7 +163,7 @@
 					%>
 						<tr>
 							<td><%= music.get("id") %></td>
-							<td><a href="/lesson02/quiz10_detail.jsp"><%= music.get("title") %></a></td>
+							<td><a href="/lesson02/quiz10_detail.jsp?id=<%= music.get("id") %>"><%= music.get("title") %></a></td>
 							<td><%= music.get("album") %></td>
 						</tr>
 					<%
